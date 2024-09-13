@@ -1,0 +1,9 @@
+# changes
+media-libs/mesa:
+moved back to 21.0.3 with tegra hack patch from hexdump0815
+patched meson.build to disable werror flag
+swap nouveau options for tegra, and set tegra to enable nouveau as well
+x11-libs/libdrm
+swap nouveau options for tegra, and set tegra to enable nouveau as well
+sys-devel/llvm*
+port old llvm forward as old mesa needs < v15 

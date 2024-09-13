@@ -1,0 +1,15 @@
+--- a/meson.build	2024-09-11 18:19:38.759990838 -0000
++++ b/meson.build	2024-09-11 18:33:46.288146719 -0000
+@@ -1032,12 +1032,10 @@
+   endforeach
+ else
+   _trial = [
+-    '-Werror=implicit-function-declaration',
+     '-Werror=missing-prototypes',
+     '-Werror=return-type',
+     '-Werror=empty-body',
+     '-Werror=incompatible-pointer-types',
+-    '-Werror=int-conversion',
+     '-Wimplicit-fallthrough',
+     '-Wno-missing-field-initializers',
+     '-Wno-format-truncation',
