@@ -7,6 +7,12 @@ PYTHON_COMPAT=( python3_{8..12} )
 inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
 	toolchain-funcs
 
+PATCHES=(
+	"${FILESDIR}"/signals.patch
+	"${FILESDIR}"/0001-gentoo-clean-up.patch
+)
+# this adds a needed patch to fix llvm/include/llvm/Support/Signals.h
+# and adds the 0001 patch from the patchset back in as the patchset has to be disabled to use local patches
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 
@@ -60,7 +66,8 @@ PDEPEND="sys-devel/llvm-common
 
 LLVM_COMPONENTS=( llvm )
 LLVM_MANPAGES=1
-LLVM_PATCHSET=${PV/_/-}
+### LLVM_PATCHSET=${PV/_/-}
+### see above; patchset is disabled
 LLVM_USE_TARGETS=provide
 llvm.org_set_globals
 

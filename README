@@ -1,9 +1,40 @@
-# changes
-media-libs/mesa:
-moved back to 21.0.3 with tegra hack patch from hexdump0815
-patched meson.build to disable werror flag
-swap nouveau options for tegra, and set tegra to enable nouveau as well
-x11-libs/libdrm
-swap nouveau options for tegra, and set tegra to enable nouveau as well
-sys-devel/llvm*
-port old llvm forward as old mesa needs < v15 
+---
+usage
+-- from scratch
+---- using this repo from scratch is a massive pain but can be done
+ >>>> 1- first install llvm::local llvm-common::local llvmgold::local
+ >>>> 1b- then symlink everything in /usr/lib/llvm/13/bin/* to /usr/bin*
+ >>>>>> a symlinks package exists for >v14 and I plan to make one ofr v13 but it is untested yet
+ >>>>>> and an dep for it is missing
+ >>>> 2- install mesa::local libdrm::local
+ >>>> 2b- install xorg-server::local xorg-drivers::local xf86-video-nouveau::local if planning to use xorg
+ >>>>>> rebuilds will need to be done for any xf86-input/xf86-video drivers
+---- most packages have masks which I haven't removed
+---- while these packages work fine for me I haven't tested everything
+---- and the tegra nouveau hack by hexdump0815 is known to be very buggy
+---
+issues
+-- VIDEO_CARDS=tegra and VIDEO_CARDS=nouveau seem to be exclusive
+-- this is a gentoo issue, these build fine together although runtime issues may exists
+---
+changes
+-- media-libs/mesa
+---- moved back to 21.0.3 with tegra hack patch from hexdump0815
+---- patched meson.build to disable werror flag
+---- swap nouveau options for tegra, and set tegra to enable nouveau as well
+  >>>> likely its possible to just enable tegra if nouveau is set instead
+  >>>> VIDEO_CARDS=tegra is rather unused
+-- x11-libs/libdrm
+---- swap nouveau options for tegra, and set tegra to enable nouveau as well
+  >>>> as above with mesa
+-- sys-devel/llvm*
+---- port old llvm forward as old mesa needs < v15
+  >>>> v13 is ported as its known working, v14 may work but it takes very very long to compile llvm
+-- x11-base/xorg-server
+---- newer xserver has ram allocation issues it seems
+-- x11-base/xorg-drivers
+---- allow for local xorg version
+---- make tegra enable nouveau
+  >>>> VIDEO_CARDS=tegra just adds a dep for xorg-server??? why???
+-- x11-drivers/xf86-video-nouveau
+---- allow for libdrm with tegra

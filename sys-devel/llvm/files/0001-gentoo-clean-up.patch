@@ -1,0 +1,37 @@
+From 137270c3c3227c14ed1d01b832967e5452038def Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 20 Aug 2016 23:47:41 +0200
+Subject: [PATCH 1/8] [llvm] [llvm-config] Clean up exported values
+
+Gentoo-specific fixup for llvm-config, including:
+- making --src-root return invalid path (/dev/null).
+
+Thanks to Steven Newbury for the initial patch.
+
+Bug: https://bugs.gentoo.org/565358
+Bug: https://bugs.gentoo.org/501684
+Gentoo-Component: llvm
+---
+ llvm/tools/llvm-config/llvm-config.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/llvm/tools/llvm-config/llvm-config.cpp b/llvm/tools/llvm-config/llvm-config.cpp
+index 1a2f04552d13..78d05b842b92 100644
+--- a/llvm/tools/llvm-config/llvm-config.cpp
++++ b/llvm/tools/llvm-config/llvm-config.cpp
+@@ -584,7 +584,11 @@ int main(int argc, char **argv) {
+       } else if (Arg == "--obj-root") {
+         OS << ActivePrefix << '\n';
+       } else if (Arg == "--src-root") {
+-        OS << LLVM_SRC_ROOT << '\n';
++        if (IsInDevelopmentTree) {
++          OS << LLVM_SRC_ROOT << '\n';
++        } else {
++          OS << "/dev/null\n";
++        }
+       } else if (Arg == "--ignore-libllvm") {
+         LinkDyLib = false;
+         LinkMode = BuiltSharedLibs ? LinkModeShared : LinkModeAuto;
+-- 
+2.35.1
+
