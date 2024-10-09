@@ -1,0 +1,21 @@
+--- a//var/db/repos/gentoo/www-client/firefox/firefox-115.15.0.ebuild	2024-10-06 14:52:07.829999951 -0000
++++ b//var/db/repos/gentoo/www-client/firefox/firefox-115.15.0.ebuild	2024-10-06 08:29:41.779999507 -0000
+@@ -57,7 +57,7 @@
+ S="${WORKDIR}/${PN}-${PV%_*}"
+ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
+ SLOT="esr"
+-KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
++KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
+ 
+ IUSE="+clang cpu_flags_arm_neon dbus debug eme-free hardened hwaccel"
+ IUSE+=" jack libproxy lto openh264 pgo pulseaudio sndio selinux"
+@@ -676,6 +676,9 @@
+ 			export RUST_TARGET="i686-unknown-linux-musl"
+ 		elif use arm64 ; then
+ 			export RUST_TARGET="aarch64-unknown-linux-musl"
++		elif use arm ; then
++		    export RUST_TARGET="armv7-unknown-linux-musleabihf" 
++			# hf might not be needed but idk tbh
+ 		else
+ 			die "Unknown musl chost, please post your rustc -vV along with emerge --info on Gentoo's bug #915651"
+ 		fi

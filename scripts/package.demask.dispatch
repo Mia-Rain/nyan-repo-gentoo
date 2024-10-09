@@ -1,0 +1,180 @@
+# package.accept_keywords# required by acpi (argument)
+=sys-power/acpi-1.7-r1 **
+# required by mesa::local (argument)
+=media-libs/mesa-21.0.3 **
+# required by libdrm
+=x11-libs/libdrm-2.4.100 **
+=x11-drivers/xf86-video-nouveau-1.0.17 **
+# required by icewm (argument)
+=x11-wm/icewm-3.4.1 **
+=dev-util/ostree-2024.3 ~arm
+=sys-apps/xdg-desktop-portal-1.18.4 ~arm
+=dev-libs/libportal-0.7.1-r1 ~arm
+# required by sys-apps/flatpak-1.14.10::gentoo
+# required by flatpak (argument)
+=sys-apps/bubblewrap-0.10.0 ~arm
+=x11-base/xwayland-24.1.2 ~arm
+=net-print/cups-pk-helper-0.2.7-r1 ~arm
+=gui-libs/libhandy-1.8.3 ~arm
+# required by sys-apps/flatpak-1.14.10::gentoo
+# required by flatpak (argument)
+=dev-libs/appstream-1.0.3 ~arm
+=sys-apps/xdg-desktop-portal-gtk-1.14.1 ~arm
+=sys-apps/flatpak-1.14.10 ~arm
+=sys-apps/osinfo-db-20240523 ~arm
+# required by sys-apps/osinfo-db-20240523::gentoo
+# required by sys-libs/libosinfo-1.11.0::gentoo
+# required by app-misc/tracker-miners-3.6.2::gentoo[iso]
+# required by app-misc/tracker-3.6.0-r1::gentoo[miners]
+# required by gnome-base/nautilus-45.2.1-r1::gentoo
+# required by gnome-extra/sushi-46.0::gentoo
+=sys-apps/osinfo-db-tools-1.11.0 ~arm
+# required by gnome-extra/gnome-contacts-46.0::gentoo
+# required by gnome-base/gnome-core-apps-45.2::gentoo
+# required by gnome-base/gnome-45.2::gentoo
+# required by gnome (argument)
+=x11-base/xwayland-9999 **
+# required by mate-base/mate-1.28.0::gentoo
+# required by mate (argument)
+=mate-base/mate-panel-1.28.1 ~arm
+# required by mate-base/mate-applets-1.28.0::gentoo
+# required by mate-base/mate-applets-meta-1.28.0::gentoo
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=dev-libs/libmateweather-1.28.0 ~arm
+# required by x11-wm/marco-1.28.1-r1::gentoo
+# required by mate-base/mate-control-center-1.28.0::gentoo
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=gnome-extra/zenity-4.0.2 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=mate-extra/mate-screensaver-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=mate-extra/caja-extensions-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo
+# required by mate (argument)
+=x11-wm/marco-1.28.1-r1 ~arm
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=mate-extra/mate-media-1.28.1 ~arm
+# required by mate (argument)
+=mate-base/mate-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[themes]
+# required by mate (argument)
+=x11-themes/mate-icon-theme-1.28.0 ~arm
+# required by mate-base/mate-control-center-1.28.0::gentoo
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=mate-base/mate-common-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo
+# required by mate (argument)
+=mate-base/mate-session-manager-1.28.0-r1 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=app-editors/pluma-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=x11-misc/mozo-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[notification]
+# required by mate (argument)
+=x11-misc/mate-notification-daemon-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo
+# required by mate (argument)
+=mate-base/mate-desktop-1.28.2 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=mate-extra/mate-utils-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=mate-extra/mate-system-monitor-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=app-text/atril-1.28.0-r1 ~arm
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=x11-terms/mate-terminal-1.28.1 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=mate-extra/mate-power-manager-1.28.1 ~arm
+# required by mate-extra/mate-media-1.28.1::gentoo
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=media-libs/libmatemixer-1.28.0 ~arm
+# required by mate-base/mate-control-center-1.28.0::gentoo
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=dev-libs/libayatana-appindicator-0.5.93 ~arm
+# required by mate-base/mate-control-center-1.28.0::gentoo
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=mate-base/libmatekbd-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=mate-base/caja-1.28.0-r1 ~arm
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=mate-base/mate-control-center-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=app-arch/engrampa-1.28.1 ~arm
+# required by mate-base/mate-1.28.0::gentoo[themes]
+# required by mate (argument)
+=x11-themes/mate-backgrounds-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=mate-extra/mate-calc-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo[extras]
+# required by mate (argument)
+=media-gfx/eom-1.28.0-r2 ~arm
+# required by mate-base/mate-1.28.0::gentoo[themes]
+# required by mate (argument)
+=x11-themes/mate-themes-3.22.24-r1 ~arm
+# required by mate-base/mate-1.28.0::gentoo
+# required by mate (argument)
+=mate-base/mate-menus-1.28.0 ~arm
+# required by mate-base/mate-1.28.0::gentoo
+# required by mate (argument)
+=mate-base/mate-settings-daemon-1.28.0 ~arm
+# required by mate-base/mate-applets-meta-1.28.0::gentoo
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=mate-base/mate-applets-1.28.0 ~arm
+# required by mate-base/mate-panel-1.28.1::gentoo
+# required by mate-base/mate-applets-1.28.0::gentoo
+# required by mate-base/mate-applets-meta-1.28.0::gentoo
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=gnome-base/dconf-editor-45.0.1 ~arm
+# required by mate-base/mate-1.28.0::gentoo[base]
+# required by mate (argument)
+=mate-base/mate-applets-meta-1.28.0 ~arm
+# required by sddm (argument)
+=x11-misc/sddm-0.21.0_p20240723 ~arm
+# required by x11-base/xorg-server-1.20.99::local[-minimal]
+# required by @selected
+# required by @world (argument)
+# required by =libdrm-9999::local (argument)
+=x11-libs/libdrm-9999 **
+# required by www-client/vivaldi (argument)
+=www-client/vivaldi-6.9.3447.41 ~arm
+# required by www-client/vivaldi-6.9.3447.41::gentoo[proprietary-codecs]
+# required by www-client/vivaldi (argument)
+=media-video/ffmpeg-chromium-127 ~arm
+# required by media-sound/alsa-tools-1.2.11::gentoo
+# required by alsa-tools (argument)
+=dev-python/pyalsa-1.2.12 **
+# required by alsa-tools (argument)
+=media-sound/alsa-tools-1.2.11 **
+# required by mpv (argument)
+=media-video/mpv-0.38.0-r1 ~arm
+# required by media-video/mpv-0.38.0-r1::gentoo[egl]
+# required by mpv (argument)
+=media-libs/libplacebo-7.349.0 ~arm
+# required by x11-base/xorg-server-9999::local[xorg]
+# required by @selected
+# required by @world (argument)
+=x11-base/xorg-drivers-9999 **
+# required by =xorg-server-9999 (argument)
+=x11-base/xorg-server-9999 **

@@ -1,0 +1,12 @@
+---
+internal install
+-- 1. boot a usb using postmarketos or hexdump0815 images
+-- 2. setup networking
+-- 3. download this repo
+-- 4. open a terminal and cd into this repo
+-- 5. run bash ./scripts/stage4/full.sh
+-- 6. run bash ./scrtips/stage4/emmc.sh
+-- 7. reboot and pray
+---
+bootable usb
+---

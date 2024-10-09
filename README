@@ -2,20 +2,58 @@
 usage
 -- from scratch
 ---- using this repo from scratch is a massive pain but can be done
- >>>> 1- first install llvm::local llvm-common::local llvmgold::local
- >>>> 1b- then symlink everything in /usr/lib/llvm/13/bin/* to /usr/bin*
- >>>>>> a symlinks package exists for >v14 and I plan to make one ofr v13 but it is untested yet
- >>>>>> and an dep for it is missing
- >>>> 2- install mesa::local libdrm::local
- >>>> 2b- install xorg-server::local xorg-drivers::local xf86-video-nouveau::local if planning to use xorg
- >>>>>> rebuilds will need to be done for any xf86-input/xf86-video drivers
+  >>>> 1- first install llvm::local llvm-common::local llvmgold::local
+  >>>> 1b- then symlink everything in /usr/lib/llvm/13/bin/* to /usr/bin*
+  >>>>>> a symlinks package exists for >v14 and I plan to make one for v13 but it is untested yet
+  >>>>>> and an dep for it is missing
+  >>>> 2- install mesa::local libdrm::local
+  >>>> 2b- install xorg-server::local xorg-drivers::local xf86-video-nouveau::local if planning to use xorg
+  >>>>>> rebuilds will need to be done for any xf86-input/xf86-video drivers
+  >>>> 3- optionally pin mesa, xorg-server, and xf86-video-nouveau
+  >>>>>> 3b- users should use the pin-* files to mask all xorg/mesa packages if planning to use the blob drivers
+  >>>>>> --- or make advanced changes; many packages will require updated versions or be registered as conflicts
+  >>>> 4- kernels, modules, and firmware can be pulled from hexdump0815's images
+  >>>>>> scripts for this are found in ./scripts; export legacy=1 to use legacy files
+  >>>>>> I've had issues compiling them by hand...
 ---- most packages have masks which I haven't removed
 ---- while these packages work fine for me I haven't tested everything
 ---- and the tegra nouveau hack by hexdump0815 is known to be very buggy
+------ llvm 13 may be required for use of some mesa utils or libaries
+------ the extent of this is unknown; and llvm 13 will conflict with newer llvms
+------ and programs linking against newer llvms may have issues
+  >>>>>> users should unmerge llvm::local llvmgold::local llvm-common::local
+  >>>>>> add the new llvm they require, build the packages needing said llvm
+  >>>>>> then reinstall llvm 13; relinking may also be needed
+###
+-- generating images/stages
+---- scripts are included to build images/stages
+  >>>> all scripts expect to be run from the base path of this repo
+  >>>>>> and will fail otherwise
+  >>>> config files are also stored within ./scripts
+---- one for a stage4 tarball, based on a systemd armv7hf stage3 tarball
+  >>>> requires mkdir, curl, tar, cp, mount, chroot, and ping
+  >>>> requires mount with --bind, --rbind, --make-rslave, --types proc options
+  >>>> found at scripts/stage4/*
+  >>>>>> export openrc=1 to use an openrc based stage3
+  >>>>>> scripts are seperated for ease
+  >>>>>>>> minimal.sh    -- for minimal system, with mirrors, configs and this repo in /var/db/repos/local
+  >>>>>>>>>> this script must be run first for all others except full.sh
+  >>>>>>>> drm.sh        -- adds the included custom packages to the above minimal build; required for working graphics -- xorg-server, mesa and deps
+  >>>>>>>> networking.sh -- adds networking to the above minimal build, NetworkManger is used by default
+  >>>>>>>>>> export wpa=1 to use wpa_supplicant with dhcpcd instead
+  >>>>>>>> desktop.sh    -- adds xfce4, mate or icewm desktop to the above minimal build
+  >>>>>>>>>> with pipewire, lightdm and a base user named linux with password changeme
+  >>>>>>>> full.sh       -- runs all of the above automatically 
+---- and another for replacing the rootfs of hexdump0815's bootable img
+  >>>> requires curl, gunzip, dd, losetup, parted, and mkfs.ext4
+  >>>> found at scripts/stage4/img.sh
+  >>>>>> export legacy=1 to start with a legacy image
+  >>>>>> the script can be edited to update to a newer image, change the distro, change the url, etc
 ---
 issues
 -- VIDEO_CARDS=tegra and VIDEO_CARDS=nouveau seem to be exclusive
 -- this is a gentoo issue, these build fine together although runtime issues may exists
+---- that or a detection system exists...
 ---
 changes
 -- media-libs/mesa

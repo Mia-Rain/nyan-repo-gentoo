@@ -1,0 +1,4 @@
+>=x11-base/xorg-drivers*
+>=x11-base/xorg-proto*
+>=x11-base/xorg-server*
+>=x11-apps/xinit*

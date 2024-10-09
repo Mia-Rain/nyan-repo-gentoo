@@ -1,0 +1,7 @@
+DEFINED_PHASES=prepare unpack
+DESCRIPTION=Kernels for nyan board armv7 chromebooks
+EAPI=8
+HOMEPAGE=https://github.com/hexdump0815/linux-mainline-and-mali-generic-stable-kernel/blob/master/readme.cbt
+SLOT=0
+SRC_URI=arm? ( https://github.com/hexdump0815/imagebuilder/releases/download/230915-02/chromebook_nyan-armv7l-bookworm.img.gz )
+_md5_=6218da5e8b5f2339e67e645d52b42bd7
