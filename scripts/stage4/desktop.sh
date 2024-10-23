@@ -14,6 +14,14 @@ bail() {
 tmproot() {
   chroot /usr/local/tmp/stage4-9999 /usr/bin/bash -c "$@"
 }
+for path in sys dev; do
+  mount --rbind "/$path" "/usr/local/tmp/stage4-9999/$path"
+  mount --make-rslave "/usr/local/tmp/stage4-9999/$path"
+done
+mount --types proc /proc /usr/local/tmp/stage4-9999/proc
+mount --bind /run /usr/local/tmp/stage4-9999/run
+mount --make-slave /usr/local/tmp/stage4-9999/run
+
 printf 'Please select your desktop; enter mate, xfce4, or icewm\n'
 printf 'lightdm is provided as the display manager\n'
 read -r desktop

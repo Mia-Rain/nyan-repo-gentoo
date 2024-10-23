@@ -11,7 +11,7 @@
 }
 [ "$openrc" ] && init="openrc"
 : "${init:=systemd}"
-tag="20240918T225506Z"
+tag="20241002T231905Z"
 name="stage3-armv7a_hardfp"
 suffix="tar.xz"
 url="https://distfiles.gentoo.org/releases/arm/autobuilds"
@@ -49,10 +49,11 @@ tmproot "ping -c1 1.1.1.1 || {
 echo 'Copying ./scripts ...'
 mkdir -p "/usr/local/tmp/stage4-9999/scripts-mia"
 cp -arv ./scripts/* /usr/local/tmp/stage4-9999/scripts-mia/
-tmproot "emerge-webrsync" || bail 1
-tmproot "cat /scripts-mia/mirrors >> /etc/portage/make.conf"
-tmproot "yes | emerge --sync --quiet"
-tmproot "yes | emerge app-eselect/eselect-repository"
+exit 1
+tmproot "cat /scripts-mia/mirrorsq >> /etc/portage/make.conf"
+tmproot "emerge-webrsync || exit 1" || bail 1
+tmproot "yes | emerge --sync --quiet || exit 1" || bail 1
+tmproot "emerge app-eselect/eselect-repository"
 tmproot "mkdir -p /etc/portage/repos.conf"
 tmproot "cat /scripts-mia/eselect-repo.conf > /etc/portage/repos.conf/eselect-repo.conf"
 tmproot "ln -s /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf"
@@ -61,6 +62,9 @@ tmproot "mkdir -p /etc/portage/package.use"
 tmproot "cat /scripts-mia/package.demask.dispatch > /etc/portage/package.accept_keywords/zz-autounmask"
 # don't bother naming since --autounmask will write changes to a pre-existing file, making multiple files useless
 tmproot "cat /scripts-mia/package.use.dispatch > /etc/portage/package.use/gentoo"
+tmproot "cat /scripts-mia/make.conf >> /etc/portage/make.conf"
+echo 'Updating @world'
+tmproot "emerge --update --deep --changed-use @world || exit 1" || bail 1
 # base console system
 # networking, xorg, mesa, etc are still not present
 printf '

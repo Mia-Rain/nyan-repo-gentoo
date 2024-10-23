@@ -22,6 +22,8 @@ mount --types proc /proc /usr/local/tmp/stage4-9999/proc
 mount --bind /run /usr/local/tmp/stage4-9999/run
 mount --make-slave /usr/local/tmp/stage4-9999/run
 tmproot "emerge llvm::local llvm-common::local llvmgold::local || exit 1" || bail 1
-tmproot "ln -s /usr/share/llvm/13/bin/llvm-config /usr/bin/ || exit 1" || bail 1
+tmproot "ln -sf /usr/share/llvm/13/bin/llvm-config /usr/bin/ || exit 1" || bail 1
+tmproot "emerge --update --deep --changed-use @world || exit 1" || bail 1
+tmproot "emerge --unmerge --depclean mesa::gentoo libdrm::gentoo || exit 1" || bail 1
 tmproot "emerge mesa::local libdrm::local || exit 1" || bail 1
 tmproot "emerge xorg-server::local xorg-drivers::local xf86-video-nouveau::local || exit 1" || bail 1

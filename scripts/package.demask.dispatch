@@ -3,7 +3,7 @@
 # required by mesa::local (argument)
 =media-libs/mesa-21.0.3 **
 # required by libdrm
-=x11-libs/libdrm-2.4.100 **
+x11-libs/libdrm **
 =x11-drivers/xf86-video-nouveau-1.0.17 **
 # required by icewm (argument)
 =x11-wm/icewm-3.4.1 **
